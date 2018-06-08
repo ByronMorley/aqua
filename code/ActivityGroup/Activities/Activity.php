@@ -6,6 +6,7 @@ class Activity extends DataObject
 
 	private static $db = array(
 		'SortOrder' => 'Int',
+		'Title' => 'Varchar'
 	);
 
 	private static $default_sort = 'SortOrder ASC';
@@ -13,13 +14,21 @@ class Activity extends DataObject
 	static $plural_name = "Activities";
 	static $singular_name = "Activity";
 
+	private static $summary_fields = array(
+		'ID'=>'ID',
+		'Title'=>'Title',
+		'ClassName'=>'ClassName',
+	);
+
 	private static $has_one = array(
-		'Group' => 'SectionActivityGroup'
+		'Group' => 'ActivityGroup'
 	);
 
 	public function getCMSFields()
 	{
 		$fields = parent::getCMSFields();
+
+		$fields->addFieldToTab('Root.Main', TextField::create('Title')->setCustomValidationMessage('This Field is Required'));
 
 		$fields->removeFieldFromTab('Root.Main', 'SortOrder');
 		$fields->removeFieldFromTab('Root.Main', 'GroupID');
@@ -47,7 +56,8 @@ class Activity extends DataObject
 		return "Question " . $pos . " of " . $count . ".";
 	}
 
-	public function correctAnswerCount(){
+	public function correctAnswerCount()
+	{
 		return $this->Answers()->filter('CorrectAnswer', 1)->Count();
 	}
 
@@ -60,11 +70,13 @@ class Activity extends DataObject
 		}
 	}
 
-	public function ShowTitle(){
+	public function ShowTitle()
+	{
 		return $this->Group()->ShowTitle;
 	}
 
-	public function ActivityTitle(){
+	public function ActivityTitle()
+	{
 		return $this->Group()->Title;
 	}
 }

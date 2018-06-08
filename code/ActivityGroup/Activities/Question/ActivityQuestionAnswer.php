@@ -4,6 +4,7 @@ class ActivityQuestionAnswer extends DataObject
 {
 
 	private static $db = array(
+		'SortOrder'=> 'Int',
 		'Answer' => 'HTMLText',
 		'CorrectAnswer' => 'Boolean',
 	);
@@ -14,6 +15,14 @@ class ActivityQuestionAnswer extends DataObject
 
 	static $plural_name = "Answers";
 	static $singular_name = "Answer";
+
+	private static $summary_fields = array(
+		'ID'=>'ID',
+		'Answer.NoHTML'=>'Answer',
+		'CorrectAnswer.Nice'=>'Correct Answer',
+		'ClassName'=>'ClassName',
+	);
+
 
 	private static $has_many = array();
 
@@ -26,6 +35,7 @@ class ActivityQuestionAnswer extends DataObject
 		$fields->addFieldToTab('Root.Main', CheckboxField::create('CorrectAnswer', 'Correct Answer'));
 
 		$fields->removeByName('QuestionID');
+		$fields->removeFieldFromTab('Root.Main', 'SortOrder');
 
 		return $fields;
 	}

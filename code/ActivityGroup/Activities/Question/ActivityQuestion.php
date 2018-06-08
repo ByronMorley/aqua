@@ -29,10 +29,31 @@ class ActivityQuestion extends Activity
 		$marker = DropdownField::create('Marker', 'Marker', $markers, $this->Marker)->setEmptyString('( Select Marker )');
 		$fields->addFieldToTab('Root.Main', $marker);
 
-
 		/* -- Question -- */
 
 		$fields->addFieldToTab('Root.Main', HtmlEditorField::create('Question', 'Question')->setRows(3));
+
+		/* -- Answer -- */
+
+		$saveWarning = LiteralField::create("Warning", "<p class='cms-warning-label'>Please Save changes to Question before adding Answers</p>");
+
+		$sectionconfig = GridFieldConfig_RelationEditor::create()
+			->removeComponentsByType('GridFieldAddNewButton')
+			->addComponents(
+				new GridFieldDeleteAction()
+			);
+
+		if ($this->ID) {
+			$sectionconfig->addComponents(
+				new GridFieldOrderableRows('SortOrder'),
+				new GridFieldAddNewButton()
+			);
+		} else {
+			$fields->addFieldToTab('Root.Answers', $saveWarning);
+		}
+
+		$sectiongridField = GridField::create('Answers', "Answers", $this->Answers(), $sectionconfig);
+		$fields->addFieldToTab("Root.Answers", $sectiongridField);
 
 
 		return $fields;

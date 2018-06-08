@@ -1,6 +1,6 @@
 <?php
 
-class SectionActivityGroup extends Section
+class ActivityGroupExtension extends DataExtension
 {
 
 	private static $db = array();
@@ -14,19 +14,17 @@ class SectionActivityGroup extends Section
 	public function getCMSFields()
 	{
 		$fields = parent::getCMSFields();
+		$this->extend('updateCMSFields', $fields);
+		return $fields;
+	}
+
+	public function updateCMSFields(FieldList $fields)
+	{
 
 		/*********************************
 		 *      SECTION BUILDER
 		 ********************************/
 
-		$sectiondataColumns = new GridFieldDataColumns();
-		$sectiondataColumns->setDisplayFields(
-			array(
-				'ID' => 'ID',
-				'Title' => 'Title',
-				'ClassName' => 'Class Name'
-			)
-		);
 
 		$sectionmultiClassConfig = new GridFieldAddNewMultiClass();
 		$sectionmultiClassConfig->setClasses(
@@ -42,17 +40,16 @@ class SectionActivityGroup extends Section
 			->removeComponentsByType('GridFieldAddNewButton')
 			->addComponents(
 				new GridFieldDeleteAction(),
-				$sectionmultiClassConfig,
-				$sectiondataColumns
+				$sectionmultiClassConfig
 			);
 
-		if ($this->ID) {
+		if ($this->owner->ID) {
 			$sectionconfig->addComponent(new GridFieldOrderableRows('SortOrder'));
 		} else {
 			$fields->addFieldToTab('Root.Activities', $saveWarning);
 		}
 
-		$sectiongridField = GridField::create('Activities', "Activities", $this->Activities(), $sectionconfig);
+		$sectiongridField = GridField::create('Activities', "Activities", $this->owner->Activities(), $sectionconfig);
 		$fields->addFieldToTab("Root.Activities", $sectiongridField);
 
 		return $fields;
