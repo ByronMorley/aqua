@@ -18,6 +18,20 @@ class ActivityGroupExtension extends DataExtension
 		return $fields;
 	}
 
+	public function forTemplate()
+	{
+		return $this->owner->renderWith('Activity/ActivityGroup');
+	}
+
+	public function contentControllerInit()
+	{
+		Requirements::css('components/font-awesome/css/font-awesome.min.css');
+		Requirements::css(AQUA_DIR .'/css/style.css');;
+		Requirements::javascript(AQUA_DIR .'/js/main.min.js');
+		Requirements::javascript(AQUA_DIR .'/app/dist/bundle.js');
+
+	}
+
 	public function updateCMSFields(FieldList $fields)
 	{
 

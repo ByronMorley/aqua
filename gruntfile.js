@@ -86,6 +86,6 @@ module.exports = function (grunt) {
         }
     });
 
-    grunt.registerTask('watchpack', ['webpack:watch']);
-    grunt.registerTask('default', ['less','concat','uglify','cssmin','watch']);
+    grunt.registerTask('aqua webpack', ['webpack:watch']);
+    grunt.registerTask('aqua', ['less','concat','uglify','cssmin','watch']);
 };

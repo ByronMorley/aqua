@@ -1,4 +1,4 @@
-<div class="panel content aq-activity aq-pairs" id="activity-$ID" data-object="PairActivity" data-canvas="#canvas-$ID">
+<div class="pane content aq-activity aq-pairs" id="activity-$ID" data-object="PairActivity" data-canvas="#canvas-$ID">
 
 	<div class="aq-pair-activity-area" id="area-1" style="display:block">
 		<ul class="aq-pool aq-left-pool">
