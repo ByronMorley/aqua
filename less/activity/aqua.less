@@ -4,49 +4,62 @@
              AQUA.LESS
 -----------------------------------------*/
 
-@line-height:32px;
-
-
+@line-height: 32px;
 
 .aq-activity-main {
     i.icon {
-        line-height:@line-height;
+        line-height: @line-height;
         margin-right: 10px;
         cursor: pointer;
         background: none;
-        height:auto;
-        width:auto;
+        height: auto;
+        width: auto;
     }
 }
 
 .aq-answer-incorrect {
-    color:@wrong;
+    color: @wrong;
 }
 
 .aq-answer-correct {
-    color:@right;
+    color: @right;
 }
 
 .aq-final-pane {
-    display:none;
-    text-align:center;
-    line-height:70px;
-    font-weight:bold;
+    display: none;
+    text-align: center;
+    line-height: 70px;
+    font-weight: bold;
 
-    h3{
-        font-size:40px;
-        color:@dark-color;
+    h3 {
+        font-size: 40px;
+        color: @dark-color;
     }
     .aq-final-score {
-        color:@alpha-color;
-        font-size:36px;
+        color: @alpha-color;
+        font-size: 36px;
 
     }
+}
+
+.modal-body {
+    padding:0;
 }
 
 .aq-selectable {
 
-    &.aq-text {}
+    cursor:pointer;
+
+    &.aq-text {
+    }
+
+    &:hover {
+        .aq-icons, .aq-answer-text {
+            p,i {
+                color: @dark-color;
+            }
+        }
+    }
 
     &.aq-box {
         width: 100%;
@@ -59,8 +72,8 @@
         -moz-box-shadow: inset -4px -5px 5px 0 rgba(0, 0, 0, 0.45);
         box-shadow: inset -4px -5px 5px 0 rgba(0, 0, 0, 0.45);
         cursor: pointer;
-        margin-bottom:10px;
-        height:40px;
+        margin-bottom: 10px;
+        height: 40px;
         line-height: 40px;
 
         h4, p {
@@ -110,4 +123,43 @@
             text-align: center;
         }
     }
+}
+
+canvas {
+    position:relative;
+    z-index: 100;
+}
+
+
+.aq-viewport {
+    width:100%;
+    height:auto;
+    margin:0;
+    padding:0;
+    border:0;
+    display:block;
+    position:relative;
+    overflow: hidden;
+    z-index:100;
+}
+
+
+.aq-loading-overlay {
+
+    position:absolute;
+    background-color:#069;
+    left:-5px;
+    top:-5px;
+    bottom:-5px;
+    right:-5px;
+    z-index:102;
+
+}
+
+
+.aq-functional-overlay {
+    position:absolute;
+    left:0;
+    top:0;
+    z-index:101;
 }

@@ -4,6 +4,7 @@ import Util from "../../../components/Util";
 class Activity {
 
     constructor(elem, AQ){
+
         this.AQ = AQ;
         this.wrapper = elem;
         this.activity = this.wrapper.querySelector(Config.ACTIVITY);

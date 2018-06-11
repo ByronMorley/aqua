@@ -1,6 +1,6 @@
 import CanvasObject from "../Supers/CanvasObject.jsx";
 
-export default class CanvasItem extends CanvasObject
+export default class Handle extends CanvasObject
 {
     constructor(elem, canvas, x, y, width, height) {
         super(canvas, x, y, width, height)
@@ -16,9 +16,15 @@ export default class CanvasItem extends CanvasObject
     }
 
     draw(ctx) {
-
+        ctx.fillRect(0, 15, 30, 10);
+        ctx.beginPath();
+        ctx.arc(35, 20, 10, 0, Math.PI * 2, true);
+        ctx.fill();
+        ctx.closePath();
+        ctx.beginPath();
+        ctx.arc(35, 20, 5, 0, Math.PI * 2, true);
+        ctx.fillStyle="#FFF";
+        ctx.fill();
     }
-
-
 
 }

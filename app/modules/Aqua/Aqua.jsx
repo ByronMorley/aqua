@@ -8,22 +8,27 @@ class Aqua {
 
         this.aqua = elem;      // Elem: Aqua
         // Obj: Merged user settings/defaults EG: <div data-options="{option1:value1, option2:value2}" >
-        this.settings = Util.extend(this.defaults(), this.aqua.dataset.options);
+        this.settings = Util.extend(this.defaults(), JSON.parse(this.aqua.dataset.options));
         this.activityList = Array.from(this.aqua.querySelectorAll(Config.ACTIVITY_LIST));
         this.activityCount = this.activityList.length;
         this.mainPanel = this.aqua.querySelector(Config.MAIN_PANEL);
         this.Activities = [];    //array of Question OBJ
         this.currentIndex = this.settings['startIndex'];
 
+        /* -- Sections -- */
+
+        this.upperSection = this.aqua.querySelector(Config.UPPER_SECTION);
+        this.lowerSection = this.aqua.querySelector(Config.LOWER_SECTION);
+
         /* -- Buttons -- */
 
+        this.buttons = this.aqua.querySelector(Config.BUTTONS);
         this.nextButton = this.aqua.querySelector(Config.NEXT_BUTTON);
         this.nextButtonActive = false;
         this.confirmButton = this.aqua.querySelector(Config.CONFIRM_BUTTON);
         this.confirmButtonActive = false;
 
         /* -- user prompt -- */
-
         this.introText = this.aqua.querySelector(Config.INTRO_TEXT);
         this.scoreSelector = this.aqua.querySelector(Config.SCORE);
         this.score = 0;
@@ -40,9 +45,16 @@ class Aqua {
 
     defaults() {
         return {
-            theme: '',  // String (default 'none'): Choices ('aq-atebol-theme' , 'aq-dark-theme' )
+
             startIndex: 0, //Int : DO NOT CHANGE
+
+            keepScore: true,
             scoreMultiplier: 10,  //Int : change to increase score output value
+
+            showActivityCount: true,
+            showNavButtons: true,
+            showFinalScreen: true,
+            showIntroductionScreen: false,
         }
     }
 
@@ -50,6 +62,32 @@ class Aqua {
         console.log('Aqua Initialised');
 
         let _Activity = this;
+
+        //remove Score
+        if (!this.settings['keepScore']) {
+            this.scoreSelector.style.display = 'none';
+            this.finalScore.style.display = 'none';
+        }
+
+        //remove Activity Count
+        if (!this.settings['showActivityCount']) {
+            this.introText.style.display = 'none';
+        }
+
+        //remove container if both are removed
+        if (!this.settings['showActivityCount'] && !this.settings['keepScore']) {
+            this.upperSection.style.display = 'none';
+        }
+
+        //remove next button
+        if (!this.settings['showFinalScreen']) {
+            this.nextButton.style.display = 'none';
+        }
+
+        //remove lower section
+        if (!this.settings['showNavButtons']) {
+            this.lowerSection.style.display = 'none';
+        }
 
         //setup Event handler for Next button
         this.nextButton.addEventListener('click', function () {

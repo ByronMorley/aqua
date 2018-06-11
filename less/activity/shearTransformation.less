@@ -1,0 +1,32 @@
+@import "../_core/_config.less";
+
+/*-----------------------------------------
+        SHEAR TRANSFORMATION.LESS
+-----------------------------------------*/
+.aq-shear-transformation {
+
+    .aq-viewport {
+        border:1px solid @dark-color;
+    }
+
+    .aq-range-wrapper {
+        position:absolute;
+        background-color:#069;
+
+
+    }
+
+    .aq-range {
+        position:relative;
+    }
+
+    canvas {
+        -moz-transform: scale(1, -1);
+        -webkit-transform: scale(1, -1);
+        -o-transform: scale(1, -1);
+        transform: scale(1, -1);
+    }
+
+
+
+}

@@ -19,7 +19,7 @@ config = {
     plugins: [
         new webpack.ProvidePlugin({
             "React": "react",
-            "PubSub": "pubsub",
+            "PubSub": "pubsub"
         }),
     ],
 };

@@ -1,0 +1,180 @@
+@import "../_core/_config.less";
+
+/*-----------------------------------------
+          CUSTOM SLIDER.LESS
+-----------------------------------------*/
+
+@background: #ff9770;
+@sliderBg: #f7f7f7;
+@line: #adccce;
+
+*, *:after, *:before {
+    box-sizing: border-box;
+}
+
+.fri-wrapper {
+    width: 52px;
+    margin: 0 auto;
+    user-select: none;
+}
+
+.fri-map-slider {
+    background: @sliderBg;
+    border-radius: 3px;
+    text-align: center;
+    box-shadow: 0 0 3px 1px rgba(0, 0, 0, 0.2);
+    position: relative;
+    color: #866a62;
+    &::before {
+        content: "";
+        width: 100%;
+        height: 1px;
+        background: #dedede;
+        position: absolute;
+        left: 0;
+        margin-top: 50px;
+        box-shadow: 0 1px 0 0 white,
+        0 230px 0 0 #dedede,
+        0 229px 0 0 white;
+    }
+    &::after {
+
+    }
+    .fa-plus {
+        display: block;
+        padding-top: 16px;
+        height: 50px;
+        cursor: pointer;
+    }
+    .fa-minus {
+        display: block;
+        height: 50px;
+        padding-top: 12px;
+        cursor: pointer;
+    }
+    .fri-drag-line {
+        width: 8px;
+        height: 182px;
+        background: @background;
+        border-radius: 8px;
+        margin: 25px auto;
+        position: relative;
+
+    }
+    .fri-line {
+        width: 8px;
+        height: 182px;
+        background: @line;
+        border-radius: 8px;
+        margin: 25px auto;
+        position: absolute;
+        margin-top: 0px;
+        margin-bottom: 0px;
+        padding-top: 10px;
+        clip: rect(0px, 8px, 183px, 0px);
+
+    }
+
+    .fri-draggable-button {
+        width: 29px;
+        height: 29px;
+        background: @sliderBg;
+        border-radius: 50%;
+        position: absolute;
+        box-shadow: 0px 4px 10px 1px rgba(0, 0, 0, 0.2);
+        margin-left: -9px;
+        cursor: pointer;
+    }
+}
+
+.fri-wrapper[orient=vertical] {
+    width: 52px;
+    margin: 0 auto;
+    user-select: none;
+
+    .fri-map-slider {
+        width: 52px;
+        height: 330px;
+        &::before {
+            width: 100%;
+            height: 1px;
+            margin-top: 50px;
+        }
+        &::after {
+
+        }
+        .fa-plus {
+            padding-top: 16px;
+            height: 50px;
+
+        }
+        .fa-minus {
+            height: 50px;
+            padding-top: 12px;
+        }
+        .fri-drag-line {
+            width: 8px;
+            height: 182px;
+        }
+        .fri-line {
+            width: 8px;
+            height: 182px;
+        }
+        .fri-draggable-button {
+            width: 29px;
+            height: 29px;
+        }
+    }
+}
+
+.fri-wrapper[orient=horizontal] {
+    height: 52px;
+    width: auto;
+    margin: 0 auto;
+    user-select: none;
+
+    .fri-map-slider {
+        width: 330px;
+        height: 52px;
+        &::before {
+            width: 1px;
+            height: 100%;
+            margin-left: 50px;
+        }
+        &::after {
+
+        }
+        .fa-plus {
+            padding-top: 20px;
+            width: 50px;
+            height: 50px;
+            float: right;
+
+        }
+        .fa-minus {
+            width: 50px;
+            height: 50px;
+            float: right;
+            padding-top: 20px;
+        }
+        .fri-drag-line {
+            height: 8px;
+            width: 180px;
+            margin:21px 25px;
+            float: right;
+        }
+        .fri-line {
+            height: 8px;
+            width: 180px;
+        }
+        .fri-draggable-button {
+            width: 29px;
+            height: 29px;
+            margin-left:0px;
+            margin-top:-9px;
+        }
+        .fri-buttons {
+            overflow:hidden;
+        }
+    }
+}

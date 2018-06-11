@@ -17,7 +17,8 @@ module.exports = function (grunt) {
         cssmin: {
             options: {
                 mergeIntoShorthands: false,
-                roundingPrecision: -1
+                roundingPrecision: -1,
+                sourceMap:true
             },
             target: {
                 files: {
@@ -26,6 +27,9 @@ module.exports = function (grunt) {
             }
         },
         uglify: {
+            options: {
+                sourceMap:true
+            },
             build: {
                 src: 'js/main.js',
                 dest: 'js/main.min.js'

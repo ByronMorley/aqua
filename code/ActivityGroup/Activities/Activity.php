@@ -6,7 +6,8 @@ class Activity extends DataObject
 
 	private static $db = array(
 		'SortOrder' => 'Int',
-		'Title' => 'Varchar'
+		'Title' => 'Varchar',
+
 	);
 
 	private static $default_sort = 'SortOrder ASC';
@@ -39,7 +40,7 @@ class Activity extends DataObject
 
 	public static function get_activity_type()
 	{
-		return trim(preg_replace('/([A-Z])/', ' $1', str_ireplace('Section', '', get_called_class())));;
+		return trim(preg_replace('/([A-Z])/', ' $1', str_ireplace('Activity', '', get_called_class())));;
 	}
 
 

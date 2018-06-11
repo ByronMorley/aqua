@@ -6,6 +6,9 @@ class Config {
         this._ACTIVITY = ".aq-activity";
         this._ACTIVITY_LIST = ".aq-activities > li";
 
+        this._LOWER_SECTION = ".aq-lower-section";
+        this._BUTTONS = ".aq-buttons";
+
         this._NEXT_BUTTON = ".aq-next";
         this._CONFIRM_BUTTON = ".aq-confirm";
         this._TRY_AGAIN_BUTTON = ".aq-try-again";
@@ -17,10 +20,17 @@ class Config {
         this._MAIN_PANEL = ".aq-main-pane";
         this._FINAL_PANEL = ".aq-final-pane";
 
+        this._UPPER_SECTION = ".aq-upper-section";
         this._SCORE = ".aq-score";
         this._FINAL_SCORE = ".aq-final-score";
 
         this._CANVAS_ITEM = ".aq-canvas-item";
+        this._VIEWPORT = ".aq-viewport";
+
+    }
+
+    get VIEWPORT() {
+        return this._VIEWPORT;
     }
 
     get CANVAS_ITEM() {
@@ -81,6 +91,18 @@ class Config {
 
     get FINAL_SCORE() {
         return this._FINAL_SCORE;
+    }
+
+    get LOWER_SECTION() {
+        return this._LOWER_SECTION;
+    }
+
+    get BUTTONS() {
+        return this._BUTTONS;
+    }
+
+    get UPPER_SECTION() {
+        return this._UPPER_SECTION;
     }
 }
 export default (new Config());
