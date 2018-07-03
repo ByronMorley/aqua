@@ -42,7 +42,7 @@ class ShearTransformationCanvas extends Canvas {
         var bw = 960;
         let bh = 540;
         //padding around grid
-        let p = 64;
+        let p = 0;
 
         let width = 32;
         let height = width;

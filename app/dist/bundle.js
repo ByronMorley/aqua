@@ -11791,7 +11791,7 @@ var ShearTransformationCanvas = function (_Canvas2) {
             var bw = 960;
             var bh = 540;
             //padding around grid
-            var p = 64;
+            var p = 0;
 
             var width = 32;
             var height = width;
@@ -25610,7 +25610,7 @@ var Skull = function (_Asset) {
     _createClass(Skull, [{
         key: "draw",
         value: function draw(ctx) {
-            ctx.drawImage(this.image, 64, 64, 128, 128);
+            ctx.drawImage(this.image, 0, 0, 128, 128);
         }
     }]);
 

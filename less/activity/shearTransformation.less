@@ -3,7 +3,10 @@
 /*-----------------------------------------
         SHEAR TRANSFORMATION.LESS
 -----------------------------------------*/
-.aq-shear-transformation {
+.aq-activity.aq-shear-transformation {
+    position:relative;
+    border:1px solid @mid-grey;
+    padding:0 0 52px 52px !important;
 
     .aq-viewport {
         border:1px solid @dark-color;
@@ -12,8 +15,6 @@
     .aq-range-wrapper {
         position:absolute;
         background-color:#069;
-
-
     }
 
     .aq-range {
@@ -27,6 +28,10 @@
         transform: scale(1, -1);
     }
 
-
+    .fri-wrapper {
+        position:absolute;
+        left:0;
+        top:0;
+    }
 
 }

@@ -8,7 +8,7 @@ class Skull extends Asset {
     }
 
     draw(ctx) {
-        ctx.drawImage(this.image, 64, 64, 128, 128);
+        ctx.drawImage(this.image, 0, 0, 128, 128);
     }
 }
 

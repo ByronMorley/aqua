@@ -354,21 +354,31 @@ canvas {
 /*-----------------------------------------
         SHEAR TRANSFORMATION.LESS
 -----------------------------------------*/
-.aq-shear-transformation .aq-viewport {
+.aq-activity.aq-shear-transformation {
+  position: relative;
+  border: 1px solid #9D9D9D;
+  padding: 0 0 52px 52px !important;
+}
+.aq-activity.aq-shear-transformation .aq-viewport {
   border: 1px solid #000000;
 }
-.aq-shear-transformation .aq-range-wrapper {
+.aq-activity.aq-shear-transformation .aq-range-wrapper {
   position: absolute;
   background-color: #069;
 }
-.aq-shear-transformation .aq-range {
+.aq-activity.aq-shear-transformation .aq-range {
   position: relative;
 }
-.aq-shear-transformation canvas {
+.aq-activity.aq-shear-transformation canvas {
   -moz-transform: scale(1, -1);
   -webkit-transform: scale(1, -1);
   -o-transform: scale(1, -1);
   transform: scale(1, -1);
+}
+.aq-activity.aq-shear-transformation .fri-wrapper {
+  position: absolute;
+  left: 0;
+  top: 0;
 }
 
 /*--------------------------- CONFIG.LESS --------------------------------*/

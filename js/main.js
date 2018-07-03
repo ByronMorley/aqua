@@ -36,7 +36,6 @@ function vertial() {
             $('.fri-draggable-button').css({
                 'top': marginTop + 14
             });
-
         }
     });
 
