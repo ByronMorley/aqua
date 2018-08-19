@@ -381,6 +381,96 @@ canvas {
   top: 0;
 }
 
+/**
+* Wordfind.js 0.0.1
+* (c) 2012 Bill, BunKat LLC.
+* Wordfind is freely distributable under the MIT license.
+* For all details and documentation:
+*     https://github.com/bunkat/wordfind
+*/
+.aq-wordsearch-activity {
+  width: 100%;
+}
+.aq-wordsearch-activity p {
+  font-size: 22px;
+  color: #000;
+  margin-left: 20px;
+}
+.aq-puzzle {
+  padding: 20px;
+  float: left;
+}
+.aq-puzzle div {
+  width: 100%;
+  margin: 0 auto;
+}
+.aq-puzzle .puzzleSquare {
+  padding: 0;
+  margin: 0;
+  height: 30px;
+  width: 30px;
+  line-height: 30px;
+  text-transform: uppercase;
+  background-color: #fff;
+  border: 1px solid #000;
+  outline: none;
+  color: #000;
+}
+.aq-puzzle .selected {
+  color: #fff;
+  background-color: #6e348c;
+  outline: none;
+}
+.aq-puzzle .selected:focus {
+  border: 1px solid #6e348c;
+}
+.aq-puzzle .found {
+  color: #000;
+  background-color: #6e348c;
+  border: 1px solid #6e348c;
+  opacity: 0.9;
+}
+.aq-puzzle .solved {
+  color: #000;
+  background-color: #6e348c;
+  border: 1px solid #6e348c;
+  opacity: 0.9;
+}
+.aq-words {
+  color: #6e348c;
+  float: left;
+  padding: 20px;
+  width: 250px;
+}
+.aq-words ul {
+  list-style-type: none;
+  overflow: hidden;
+  margin-bottom: 20px;
+}
+.aq-words li {
+  padding: 0 0 7px;
+  font: 1em sans-serif;
+  display: inline-block;
+  float: left;
+  width: auto;
+  margin-right: 10px;
+}
+.aq-words .wordFound {
+  text-decoration: line-through;
+  color: #6e348c;
+}
+#solve {
+  background: #6e348c;
+  color: #fff;
+  border: 2px solid #6e348c;
+  opacity: .5;
+  transition: opacity 0.25s ease-in;
+}
+#solve:hover,
+#solve.gameSolved {
+  opacity: 1;
+}
+
 /*--------------------------- CONFIG.LESS --------------------------------*/
 /*  1170px  */
 /*  1170px  */

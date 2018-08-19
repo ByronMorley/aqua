@@ -47,6 +47,11 @@ class Activity extends DataObject
 	public function forTemplate()
 	{
 		$template = str_replace(" ", "", $this->get_activity_type());
+
+		SS_Log::log(serialize($this->get_activity_type()), SS_Log::NOTICE);
+		SS_Log::log(serialize(get_called_class()), SS_Log::NOTICE);
+		
+		
 		return $this->renderWith('Activity/' . $template);
 	}
 

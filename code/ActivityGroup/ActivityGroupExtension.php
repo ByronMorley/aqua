@@ -87,7 +87,6 @@ class ActivityGroupExtension extends DataExtension
 	public function updateCMSFields(FieldList $fields)
 	{
 
-
 		/*********************************
 		 *        CONFIG
 		 ********************************/
@@ -103,7 +102,6 @@ class ActivityGroupExtension extends DataExtension
 			)
 		);
 
-
 		/*********************************
 		 *      ACTIVITY BUILDER
 		 ********************************/
@@ -114,6 +112,7 @@ class ActivityGroupExtension extends DataExtension
 				'ActivityQuestion' => ActivityQuestion::get_activity_type(),
 				'ActivityOrderList' => ActivityOrderList::get_activity_type(),
 				'ActivityPairs' => ActivityPairs::get_activity_type(),
+				'ActivityWordSearch' => ActivityWordSearch::get_activity_type(),
 				'ActivityShearTransformation' => ActivityShearTransformation::get_activity_type(),
 			)
 		);
