@@ -6,6 +6,31 @@
 /*  100%    */
 /*  100%    */
 
+.aq-anagram-activity .aq-answer-section {
+  display: flex;
+  justify-content: center;
+}
+.aq-anagram-activity input {
+  margin: 0;
+  width: 240px;
+  text-transform: uppercase;
+  text-align: center;
+}
+.aq-anagram-activity .aq-icons {
+  margin-left: 10px;
+}
+.aq-anagram {
+  padding: 20px 40px 40px 40px;
+  width: 100%;
+}
+.aq-anagram span {
+  font-size: 42px;
+  text-transform: uppercase;
+  color: #000;
+  width: 100%;
+  text-align: center;
+}
+
 /*--------------------------- CONFIG.LESS --------------------------------*/
 /*  1170px  */
 /*  1170px  */
@@ -27,7 +52,13 @@
 .aq-answer-incorrect {
   color: #FF0000;
 }
+.aq-answer-incorrect:hover {
+  color: #FF0000;
+}
 .aq-answer-correct {
+  color: #00A100;
+}
+.aq-answer-correct:hover {
   color: #00A100;
 }
 .aq-final-pane {
@@ -43,6 +74,16 @@
 .aq-final-pane .aq-final-score {
   color: #6E348C;
   font-size: 36px;
+}
+.aq-image {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.aq-image img {
+  height: 160px !important;
+  width: auto !important;
+  padding: 20px 50px !important;
 }
 .modal-body {
   padding: 0;
@@ -150,6 +191,13 @@ canvas {
   left: 0;
   top: 0;
   z-index: 101;
+}
+
+.aq-numeracy .aq-icons {
+  margin-left: 10px;
+}
+.aq-numeracy .aq-answers input {
+  margin-top: 0;
 }
 
 /*--------------------------- CONFIG.LESS --------------------------------*/
@@ -289,7 +337,7 @@ canvas {
   display: block;
 }
 .aq-activity-main .aq-upper-section {
-  margin-bottom: 10px;
+  margin-bottom: 0px;
   font-size: 20px;
   line-height: 26px;
   font-weight: 700;
@@ -307,10 +355,18 @@ canvas {
   line-height: 26px;
   font-weight: 700;
 }
-.aq-activity-main .aq-activity.content .aq-question p {
-  font-size: 24px;
-  line-height: 32px;
+.aq-activity-main .aq-activity.content .aq-question p,
+.aq-activity-main .aq-activity.content .aq-question ul,
+.aq-activity-main .aq-activity.content .aq-question li,
+.aq-activity-main .aq-activity.content .aq-question span {
+  font-size: 18px;
+  line-height: 1.4;
   font-weight: 600;
+  color: #000;
+}
+.aq-activity-main .aq-activity.content .aq-question ul {
+  margin-left: 40px;
+  list-style-type: circle;
 }
 .aq-activity-main .aq-activity.content .aq-rule {
   font-weight: 400;
@@ -330,6 +386,9 @@ canvas {
 .aq-activity-main .aq-activity.content .aq-answers > ul > li {
   transition: ease all 0.5s;
   margin-bottom: 10px;
+}
+.aq-activity-main .aq-activity.content .aq-answers > ul > li p {
+  margin: 0;
 }
 .aq-activity-main .aq-activity.content .aq-answers .aq-answer-text p {
   font-weight: 600;
@@ -388,6 +447,9 @@ canvas {
 * For all details and documentation:
 *     https://github.com/bunkat/wordfind
 */
+.aq-main-pane .content {
+  background-color: #fff;
+}
 .aq-wordsearch-activity {
   width: 100%;
 }
@@ -469,6 +531,12 @@ canvas {
 #solve:hover,
 #solve.gameSolved {
   opacity: 1;
+}
+.activity-block .pane.content {
+  overflow: hidden;
+}
+.activity-block button {
+  float: right;
 }
 
 /*--------------------------- CONFIG.LESS --------------------------------*/

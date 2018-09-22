@@ -1,3 +1,9 @@
+/**
+ *  Static class
+ *  Return html icons
+ */
+
+
 class Icons {
 
     constructor() {

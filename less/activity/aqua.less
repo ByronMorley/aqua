@@ -19,10 +19,16 @@
 
 .aq-answer-incorrect {
     color: @wrong;
+    &:hover  {
+        color: @wrong;
+    }
 }
 
 .aq-answer-correct {
     color: @right;
+    &:hover {
+        color: @right;
+    }
 }
 
 .aq-final-pane {
@@ -38,7 +44,18 @@
     .aq-final-score {
         color: @alpha-color;
         font-size: 36px;
+    }
+}
 
+.aq-image {
+
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    img {
+        height:160px !important;
+        width:auto !important;
+        padding: 20px 50px !important;
     }
 }
 

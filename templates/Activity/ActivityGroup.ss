@@ -9,7 +9,7 @@
 <% require javascript('aqua/js/main.min.js') %>
 <% require javascript('aqua/app/dist/bundle.js') %>
 
-<div id="aqua-$ID" class="aq-activity-main" data-options=$dataOptions>
+<div id="aqua-$ID" class="aq-activity-main" data-options=$dataOptions data-translations=$translations>
 	<div class="pane">
 		<div class="pane header">
             <span class="title">
@@ -30,15 +30,15 @@
 			</ul>
 			<div class="pane content aq-lower-section">
 				<div class="section right aq-buttons">
-					<button id="aq-confirm-$ID" class="inactive aq-confirm">Confirm</button>
-					<button class="inactive aq-next" id="aq-next-$ID">Next</button>
+					<button id="aq-confirm-$ID" class="inactive aq-confirm"><%t Aqua.CONFIRM "Confirm" %></button>
+					<button class="inactive aq-next" id="aq-next-$ID"><%t Aqua.NEXT "Next" %></button>
 				</div>
 			</div>
 		</div>
 	</div>
 	<div class="pane content aq-final-pane">
-		<h3>Activity Completed</h3>
+		<h3><%t Aqua.ACTIVITY_COMPLETED "Activity Completed" %></h3>
 		<span class="aq-final-score"></span>
-		<button class="aq-try-again">Try Again</button>
+		<button class="aq-try-again"><%t Aqua.TRY_AGAIN "Try Again" %></button>
 	</div>
 </div>

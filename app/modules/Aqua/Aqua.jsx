@@ -9,6 +9,11 @@ class Aqua {
         this.aqua = elem;      // Elem: Aqua
         // Obj: Merged user settings/defaults EG: <div data-options="{option1:value1, option2:value2}" >
         this.settings = Util.extend(this.defaults(), JSON.parse(this.aqua.dataset.options));
+
+        //this.language = this.aqua.dataset.language;
+
+        this.translations = JSON.parse(this.aqua.dataset.translations);
+
         this.activityList = Array.from(this.aqua.querySelectorAll(Config.ACTIVITY_LIST));
         this.activityCount = this.activityList.length;
         this.mainPanel = this.aqua.querySelector(Config.MAIN_PANEL);
@@ -197,7 +202,7 @@ class Aqua {
 
     addIntroText() {
         let intro = document.createElement('h3');
-        intro.innerHTML = 'Activity ' + (this.currentIndex + 1) + " of " + this.activityCount;
+        intro.innerHTML = this.translations.activity +" " + (this.currentIndex + 1) + " " + this.translations.of + " " + this.activityCount;
         this.introText.innerHTML = "";
         this.introText.appendChild(intro);
     }
@@ -209,8 +214,9 @@ class Aqua {
     }
 
     updateScore() {
+
         let scoreElem = document.createElement('span');
-        scoreElem.innerHTML = "Score: " + this.score + "/" + this.scoreCap;
+        scoreElem.innerHTML =  this.translations.score +": "  + this.score + "/" + this.scoreCap;
         this.scoreSelector.innerHTML = "";
         this.scoreSelector.appendChild(scoreElem);
         this.finalScore.innerHTML = "";

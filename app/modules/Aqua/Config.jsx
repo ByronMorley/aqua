@@ -17,6 +17,8 @@ class Config {
         this._EXPLANATION_TEXT = ".aq-explanation";
         this._SELECTABLE = ".aq-selectable";
 
+        this._ANSWER = ".aq-answer";
+
         this._MAIN_PANEL = ".aq-main-pane";
         this._FINAL_PANEL = ".aq-final-pane";
 

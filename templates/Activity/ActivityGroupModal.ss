@@ -6,73 +6,62 @@
 <% require javascript('twitter/bootstrap/dist/js/bootstrap.bundle.min.js') %>
 <% require javascript('aqua/app/dist/bundle.js') %>
 
-<div class="block text-block">
-	<div class="panel rounded content">
-        <% if $ShowTitle %>
-			<h2>$Title</h2>
-        <% end_if %>
+<div class="block text-block activity-block">
+    <div class="pane round content typography">
+        <h2>$Title</h2>
         $Content
-		<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#aqua-$ID">Start Activity
-		</button>
-	</div>
+        <button type="button" class="btn btn-info" data-toggle="modal" data-target="#aqua-$ID"><%t Aqua.START_ACTIVITY "Start Activity" %></button>
+    </div>
 </div>
-
 
 <!-- The Modal -->
-<div id="aqua-$ID" class="aq-activity-main aq-modal modal fade" role="dialog" data-options=$dataOptions>
-	<div class="modal-dialog modal-lg ">
-		<div class="modal-content">
+<div id="aqua-$ID" class="aq-activity-main aq-modal modal fade" role="dialog" data-options=$dataOptions data-translations=$translations>
+    <div class="modal-dialog modal-lg ">
+        <div class="modal-content">
 
-			<!-- Modal Header -->
-			<div class="modal-header">
+            <!-- Modal Header -->
+            <div class="modal-header">
                  <span class="title">
                      $Title
-				 </span>
-			</div>
+                 </span>
+            </div>
 
-			<!-- Modal body -->
-			<div class="modal-body">
-				<div class="aq-main-pane ">
-					<div class="pane content aq-upper-section">
-						<div class="section left aq-intro">
-						</div>
-						<div class="section right aq-score">
-						</div>
-					</div>
-					<ul class="aq-activities">
+            <!-- Modal body -->
+            <div class="modal-body">
+                <div class="aq-main-pane ">
+                    <div class="pane content aq-upper-section">
+                        <div class="section left aq-intro">
+                        </div>
+                        <div class="section right aq-score">
+                        </div>
+                    </div>
+                    <ul class="aq-activities">
                         <% loop $Activities %>
-							<li>
+                            <li>
                                 $Me
-							</li>
+                            </li>
                         <% end_loop %>
-					</ul>
-					<div class="pane content aq-lower-section">
-						<div class="section right aq-buttons">
-							<button id="aq-confirm-$ID" class="inactive aq-confirm">Confirm</button>
-							<button class="inactive aq-next" id="aq-next-$ID">Next</button>
-						</div>
-					</div>
-				</div>
-				<div class="pane content aq-final-pane">
-					<h3>Activity Completed</h3>
-					<span class="aq-final-score"></span>
-					<button class="aq-try-again">Try Again</button>
-				</div>
-			</div>
+                    </ul>
+                    <div class="pane content aq-lower-section">
+                        <div class="section right aq-buttons">
+                            <button id="aq-confirm-$ID" class="inactive aq-confirm"><%t Aqua.CONFIRM "Confirm" %></button>
+                            <button class="inactive aq-next" id="aq-next-$ID"><%t Aqua.NEXT "Next" %></button>
+                        </div>
+                    </div>
+                </div>
+                <div class="pane content aq-final-pane">
+                    <h3><%t Aqua.ACTIVITY_COMPLETED "Activity Completed" %></h3>
+                    <span class="aq-final-score"></span>
+                    <button class="aq-try-again"><%t Aqua.TRY_AGAIN "Try Again" %></button>
+                </div>
+            </div>
 
-			<div class="modal-footer pane round bottom">
-				<button id="modal-cancel" type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-			</div>
-		</div>
+            <div class="modal-footer pane round bottom">
+                <button id="modal-cancel" type="button" class="btn btn-secondary" data-dismiss="modal"><%t Aqua.CLOSE "Close" %></button>
+            </div>
+        </div>
 
-		<!-- Modal footer -->
-
-	</div>
-</div>
+        <!-- Modal footer -->
+    </div>
 </div>
 <!-- END MODAL -->
-<script>
-	$(document).ready(function () {
-		$('.aq-modal').modal('show');
-	});
-</script>

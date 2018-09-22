@@ -63,6 +63,7 @@ class Activity {
     }
 
     updateUI(){
+        console.log('update');
         this.calculateSelectedCorrectAnswerCount();
     }
 

@@ -16,8 +16,19 @@
 @dark-color:#000;
 @light-color:#fff;
 
+
+.aq-main-pane {
+
+    .content {
+        background-color:@light-color;
+    }
+
+}
+
 .aq-wordsearch-activity {
+
     width: 100%;
+
 
     p {
         font-size:22px;
@@ -109,5 +120,15 @@
 
     &:hover, &.gameSolved {
         opacity: 1;
+    }
+}
+
+.activity-block {
+
+    .pane.content{
+        overflow: hidden;
+    }
+    button {
+        float:right;
     }
 }

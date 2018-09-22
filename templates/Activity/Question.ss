@@ -3,6 +3,9 @@
 	<div class="pane aq-question">
         $Question
 	</div>
+    <div class="pane aq-image">
+        $Image
+    </div>
 	<div class="pane">
 		<div class="section right aq-rule">
 			<span>$questionRuleText</span>
@@ -19,7 +22,7 @@
                             <!--Keep empty icons injected here -->
                         </span>
 						<span class="section left aq-answer-text">
-                            $Answer
+                            $AnswerText
 						</span>
 					</li>
                 <% end_loop %>

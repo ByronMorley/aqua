@@ -25,7 +25,7 @@
 
     .aq-upper-section {
 
-        margin-bottom: 10px;
+        margin-bottom: 0px;
         font-size: 20px;
         line-height: 26px;
         font-weight:700;
@@ -51,10 +51,15 @@
 
 
             .aq-question {
-                p {
-                    font-size: 24px;
-                    line-height: 32px;
+                p, ul, li, span {
+                    font-size: 18px;
+                    line-height: 1.4;
                     font-weight: 600;
+                    color:#000;
+                }
+                ul{
+                    margin-left:40px;
+                    list-style-type: circle;
                 }
             }
             .aq-rule {
@@ -80,6 +85,9 @@
                     & > li {
                         transition: ease all 0.5s;
                         margin-bottom: 10px;
+                        p {
+                            margin:0;
+                        }
                     }
                 }
 

@@ -13,8 +13,10 @@ export default class Core {
 
 PubSub.subscribe('dom_ready', () => {
         if (document.querySelector('.aq-activity-main')) {
-            new Aqua(document.querySelector('.aq-activity-main'));
-
+            let activityGroups = document.querySelectorAll('.aq-activity-main');
+            for (let i = 0; i < activityGroups.length; i++) {
+                new Aqua(activityGroups[i]);
+            }
         }
     }
 );

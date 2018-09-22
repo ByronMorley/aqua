@@ -1,4 +1,4 @@
-<div class="pane content aq-activity aq-wordsearch-activity" id="activity-$ID" >
+<div class="pane content aq-activity aq-wordsearch-activity" id="activity-$ID" data-object="WordSearch">
 		<p>Word Search</p>
 		<div class='aq-puzzle'></div>
 		<div class='aq-words'>

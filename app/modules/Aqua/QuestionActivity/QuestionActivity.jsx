@@ -41,9 +41,9 @@ class Question extends Activity {
     getExplanationText() {
         if (this.hasOneAnswer) {
             if (this.selectedCorrectAnswerCount) {
-                return "Correct Answer";
+                return this.AQ.translations.correct;
             } else {
-                return "Incorrect Answer";
+                return this.AQ.translations.incorrect;
             }
         } else {
             return "You have got " + this.selectedCorrectAnswerCount + " out of " + this._correctAnswerCount + " Correct."
