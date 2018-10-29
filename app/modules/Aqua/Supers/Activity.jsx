@@ -3,7 +3,7 @@ import Util from "../../../components/Util";
 
 class Activity {
 
-    constructor(elem, AQ){
+    constructor(elem, AQ) {
 
         this.AQ = AQ;
         this.wrapper = elem;
@@ -23,7 +23,7 @@ class Activity {
 
     }
 
-    defaults(){
+    defaults() {
 
     }
 
@@ -39,13 +39,14 @@ class Activity {
         this.wrapper.style.display = "none";
     }
 
-    calculateSelectedCorrectAnswerCount(){
+
+    calculateSelectedCorrectAnswerCount() {
 
         //update the Main class with the score
         this.AQ.addScore(this.selectedCorrectAnswerCount);
     }
 
-    confirmSelection(){
+    confirmSelection() {
         this.checkAnswers();
         this.updateUI();
     }
@@ -62,17 +63,32 @@ class Activity {
         });
     }
 
-    updateUI(){
+    updateUI() {
         console.log('update');
         this.calculateSelectedCorrectAnswerCount();
     }
 
-    reset(){
+    deselectAll() {
+        this.Selectables.map((selectable) => {
+            selectable.deselect();
+        });
+    }
+
+
+    /**
+     * Gets called after the confirm button is pressed
+     * used this to stop the user messing with the UI after they have submitted
+     */
+    deactivateUI() {
+    }
+
+    reset() {
         this.Selectables.map((selectable) => {
             selectable.reset();
         });
         this.deactivate();
         this.selectedCorrectAnswerCount = 0;
     }
+}
 
-}export default Activity;
+export default Activity;

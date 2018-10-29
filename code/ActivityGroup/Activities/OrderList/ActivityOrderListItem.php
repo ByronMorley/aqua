@@ -11,6 +11,13 @@ class ActivityOrderListItem extends DataObject
 		'ActivityOrderList' => 'ActivityOrderList'
 	);
 
+	private static $summary_fields = array(
+		'ID' => 'ID',
+		'Text' => 'Text',
+		'SortOrder' => 'Sort Order',
+		'ClassName' => 'ClassName',
+	);
+
 	private static $has_many = array();
 
 	static $plural_name = "Items";

@@ -5,8 +5,10 @@ import PairActivity from '../PairsActivity/PairActivity.jsx';
 import Anagram from '../Anagrams/Anagram.jsx';
 import WordSearch from '../WordSearch/WordSearch.jsx';
 import ShearTransformation from '../ShearTransformation/ShearTransformationActivity.jsx';
+import Highlighting from '../Highlighting/HighlightingActivity.jsx'
 
-const activities = { Question, OrderList, PairActivity, ShearTransformation, NumeracyQuestion, Anagram , WordSearch };
+
+const activities = { Highlighting ,Question, OrderList, PairActivity, ShearTransformation, NumeracyQuestion, Anagram , WordSearch };
 
 export default function activityFactory (name) {
     return activities[name];

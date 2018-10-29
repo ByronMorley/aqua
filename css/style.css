@@ -193,6 +193,75 @@ canvas {
   z-index: 101;
 }
 
+/*--------------------------- CONFIG.LESS --------------------------------*/
+/*  1170px  */
+/*  1170px  */
+/*  970px   */
+/*  750px   */
+/*  100%    */
+/*  100%    */
+/*-----------------------------------------
+             HIGHLIGHTING.LESS
+-----------------------------------------*/
+.aq-highlighting .aq-area {
+  float: left;
+  height: 450px;
+  border: 1px solid #000;
+}
+.aq-highlighting .aq-question {
+  margin-bottom: 20px;
+}
+.aq-highlighting .aq-area-title {
+  background-color: #6E348C;
+  color: #FFFFFF;
+  height: 50px;
+  padding: 5px;
+}
+.aq-highlighting .aq-area-title span {
+  float: left;
+  height: 40px;
+  line-height: 40px;
+  padding-left: 5px;
+}
+.aq-highlighting .aq-extract-area {
+  width: 70%;
+}
+.aq-highlighting .aq-words-area {
+  width: 30%;
+}
+.aq-highlighting .aq-highlighing-area {
+  padding: 10px;
+  height: 400px;
+  overflow: scroll;
+}
+.aq-highlighting .aq-add-word {
+  float: right;
+  height: 40px;
+  font-size: 16px;
+  font-weight: 600;
+  padding: 0 10px;
+}
+.aq-highlighting .aq-word-list {
+  height: 400px;
+  overflow: scroll;
+  padding: 10px;
+}
+.aq-highlighting .aq-word-list > li {
+  display: flex;
+  align-items: stretch;
+}
+.aq-highlighting .aq-word-list > li span {
+  display: flex;
+  align-items: center ;
+  width: 80%;
+  float: left;
+}
+.aq-highlighting .aq-word-list > li i.icon {
+  width: 20%;
+  float: right;
+  margin: 0;
+}
+
 .aq-numeracy .aq-icons {
   margin-left: 10px;
 }

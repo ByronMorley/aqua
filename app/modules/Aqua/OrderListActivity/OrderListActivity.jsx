@@ -1,7 +1,7 @@
 import Config from '../Config.jsx';
 import Activity from '../Supers/Activity.jsx';
 import Item from './OrderItemSelectable.jsx';
-
+import DragAndDrop from "./DragAndDrop.jsx";
 
 class OrderList extends Activity {
 
@@ -10,10 +10,17 @@ class OrderList extends Activity {
         this.itemSelected = false;
         this.selectedItem = null; //Item OBJ
         this.tag = 'li';
+
+        /*-- Drag and Drop --*/
+        this.draggableItemIsActive = false;
+        this.activeDragItem = null;
+        this.hoverElement = null;
+        this.hoveringOverAnElement = false;
+
         this.init();
     }
 
-    defaults(){
+    defaults() {
         return {
             animate: false
         }
@@ -22,13 +29,20 @@ class OrderList extends Activity {
     init() {
         let _OrderList = this;
 
-        //setup Item OBJ
-
         Array.from(this.activity.querySelectorAll(Config.SELECTABLE)).map((selectable) => {
             _OrderList.Selectables.push(new Item(selectable, _OrderList));
         });
+
+        this.setupDragAndDrop();
+
         this._correctAnswerCount = this.Selectables.length;
         this.AQ.activateConfirm();
+    }
+
+    setupDragAndDrop() {
+        this.addDragAndDropToElement();
+        this.addDropFunctionToElement();
+        this.addDropFunctionToArea();
     }
 
     swapItems(dragAndDrop) {
@@ -50,7 +64,85 @@ class OrderList extends Activity {
         this.clearSelected();
     }
 
-    reset(){
+    addDragAndDropToElement() {
+
+        let _this = this;
+
+        $(this.Selectables).each(function () {
+            let elem = this.elem;
+            let _selectable = this;
+
+            $(elem).draggable({
+                helper: 'clone',
+                start: function (event, ui) {
+                    console.log('start');
+                    _this.deselectAll();
+                    _this.activeDragItem = _selectable;
+                    $(elem).css('visibility', 'hidden');
+                },
+                stop: function (event, ui) {
+                    console.log('end');
+                    _this.activeDragItem = null;
+                    $(elem).css('visibility', 'visible');
+                }
+            });
+        });
+    }
+
+    addDropFunctionToElement() {
+
+        let _this = this;
+
+        $(this.Selectables).each(function () {
+
+            let elem = this.elem;
+            let _selectable = this;
+
+            $(elem).droppable({
+                over: function (event, ui) {
+                    console.log('over');
+                    _this.hoveringOverAnElement = true;
+                    _this.hoverElement = _selectable;
+                },
+                out: function (event, ui) {
+                    console.log('out');
+                    _this.hoveringOverAnElement = false;
+                    _this.hoverElement = null;
+                },
+                deactivate: function (event, ui) {
+                    console.log('deactivate');
+                }
+            });
+        });
+    };
+
+    addDropFunctionToArea() {
+
+        let _this = this;
+
+        $(this.Selectables).each(function () {
+
+            let elem = this.elem;
+            let _selectable = this;
+
+            $(elem).droppable({
+                drop: function (event, ui) {
+
+                    console.log('hello');
+
+
+                    if (_this.hoveringOverAnElement) {
+                        console.log('hover');
+
+                        let dragAndDrop = new DragAndDrop({originItem: _this.activeDragItem, destinationItem: _this.hoverElement});
+                        _this.swapItems(dragAndDrop);
+                    }
+                }
+            });
+        });
+    };
+
+    reset() {
         this.AQ.activateConfirm();
         super.reset();
     }
@@ -58,3 +150,4 @@ class OrderList extends Activity {
 }
 
 export default OrderList;
+

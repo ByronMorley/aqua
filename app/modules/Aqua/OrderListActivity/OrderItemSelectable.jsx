@@ -9,6 +9,7 @@ class OrderListItem extends Selectable{
         this.position = parseInt(this.elem.dataset.sort);
         this.correct = false;
         this.Activity.itemSelected = false;
+
     }
 
     click() {
@@ -41,6 +42,7 @@ class OrderListItem extends Selectable{
 
     check() {
         let position = (Util.getNodeIndex(this.elem) + 1);
+
         if(position === this.position){
             this.correct = true;
             this.Activity.selectedCorrectAnswerCount++;

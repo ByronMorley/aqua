@@ -198,6 +198,7 @@ class Aqua {
     deactivateConfirm() {
         this.confirmButton.classList.add('inactive');
         this.confirmButtonActive = false;
+        this.currentActivity.deactivateUI();
     }
 
     addIntroText() {

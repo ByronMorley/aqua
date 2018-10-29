@@ -8,6 +8,12 @@ class Selectable {
         this.elem = elem;
         this.selected = false;
         this.iconWrapper = this.elem.querySelector(Config.ICONS);
+
+        /* -- DRAG AND DROP --*/
+
+        this.draggable = false;
+
+
         this.init();
     }
 
@@ -17,6 +23,12 @@ class Selectable {
         this.elem.addEventListener('click', function () {
             _Activity.click();
         });
+
+        if (this.draggable) {
+            //TODO replace this with ES6 no jquert code later
+        }
+
+
     }
 
     click() {
@@ -58,7 +70,7 @@ class Selectable {
         this.addIcon(Icons.cross);
     }
 
-    clearIcons(){
+    clearIcons() {
         this.iconWrapper.innerHTML = "";
     }
 
@@ -70,7 +82,7 @@ class Selectable {
         this.elem.style.opacity = 1;
     }
 
-    reset(){
+    reset() {
         this.clearIcons();
         this.deselect();
         this.fadeIn();

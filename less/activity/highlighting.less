@@ -1,0 +1,70 @@
+@import "../_core/_config.less";
+
+/*-----------------------------------------
+             HIGHLIGHTING.LESS
+-----------------------------------------*/
+
+.aq-highlighting {
+
+    .aq-area {
+        float: left;
+        height: 450px;
+        border: 1px solid #000;
+    }
+    .aq-question {
+        margin-bottom:20px;
+    }
+    .aq-area-title {
+        background-color: @alpha-color;
+        color: @light-color;
+        height:50px;
+        padding:5px;
+
+        span {
+            float:left;
+            height:40px;
+            line-height:40px;
+            padding-left:5px;
+        }
+    }
+
+    .aq-extract-area {
+        width: 70%;
+    }
+    .aq-words-area {
+        width: 30%;
+    }
+
+    .aq-highlighing-area {
+        padding:10px;
+        height: 400px;
+        overflow: scroll;
+    }
+    .aq-add-word {
+        float:right;
+        height:40px;
+        font-size:16px;
+        font-weight:600;
+        padding:0 10px;
+    }
+    .aq-word-list {
+        height: 400px;
+        overflow: scroll;
+        padding:10px;
+        &>li {
+            display:flex;
+            align-items: stretch;
+            span{
+                display:flex;
+                align-items:center ;
+                width:80%;
+                float:left;
+            }
+            i.icon {
+                width:20%;
+                float:right;
+                margin:0;
+            }
+        }
+    }
+}

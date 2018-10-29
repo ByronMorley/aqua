@@ -10,6 +10,12 @@ class ActivityOrderList extends Activity
 		'Items' => 'ActivityOrderListItem'
 	);
 
+	private static $summary_fields = array(
+		'ID' => 'ID',
+		'Question.NoHTML' => 'Question',
+		'ClassName' => 'ClassName',
+	);
+
 	public function getCMSFields()
 	{
 		$fields = parent::getCMSFields();
@@ -18,29 +24,23 @@ class ActivityOrderList extends Activity
 		 *      List Items
 		 ********************************/
 
-		$sectiondataColumns = new GridFieldDataColumns();
-		$sectiondataColumns->setDisplayFields(
-			array(
-				'ID' => 'ID',
-				'Text' => 'Text',
-				'ClassName' => 'Class Name'
-			)
-		);
-
-		$saveWarning = LiteralField::create("Warning", "<p class='cms-warning-label'>To Add Content please save changes</p>");
+		$saveWarning = LiteralField::create("Warning", "<p class='cms-warning-label'>Please Save changes to Question before adding Answers</p>");
 
 		$sectionconfig = GridFieldConfig_RelationEditor::create()
 			->removeComponentsByType('GridFieldAddNewButton')
 			->addComponents(
-				new GridFieldDeleteAction(),
-				$sectiondataColumns
+				new GridFieldDeleteAction()
 			);
 
 		if ($this->ID) {
-			$sectionconfig->addComponent(new GridFieldOrderableRows('SortOrder'));
+			$sectionconfig->addComponents(
+				new GridFieldOrderableRows('SortOrder'),
+				new GridFieldAddNewButton()
+			);
 		} else {
 			$fields->addFieldToTab('Root.Items', $saveWarning);
 		}
+
 
 		$sectiongridField = GridField::create('Items', "Items", $this->Items(), $sectionconfig);
 		$fields->addFieldToTab("Root.Items", $sectiongridField);
@@ -48,9 +48,17 @@ class ActivityOrderList extends Activity
 		return $fields;
 	}
 
-	public function randomisedList(){
+	public function randomisedList()
+	{
+		$orderedList = $this->Items()->sort('sortOrder', 'ASC');
+		$newList = array();
 
-		return $this->Items()->sort('RAND()');
+		foreach ($orderedList as $index => $item) {
+			$item->SortOrder = $index + 1;
+			$newList[] = $item;
+		}
+		shuffle($newList);
+
+		return new ArrayList($newList);
 	}
-
 }

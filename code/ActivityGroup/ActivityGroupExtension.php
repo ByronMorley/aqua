@@ -33,11 +33,7 @@ class ActivityGroupExtension extends DataExtension
 
 	public function contentControllerInit()
 	{
-		Requirements::css('components/font-awesome/css/font-awesome.min.css');
-		Requirements::css(AQUA_DIR . '/css/style.css');;
-		Requirements::javascript(AQUA_DIR . '/js/main.min.js');
-		Requirements::javascript(AQUA_DIR . '/app/dist/bundle.js');
-
+		//dependencies are added directly to the template to save on overheads
 	}
 
 	public function populateDefaults()
@@ -136,6 +132,7 @@ class ActivityGroupExtension extends DataExtension
 				'ActivityOrderList' => ActivityOrderList::get_activity_type(),
 				'ActivityPairs' => ActivityPairs::get_activity_type(),
 				'ActivityWordSearch' => ActivityWordSearch::get_activity_type(),
+				'ActivityHighlighting' => ActivityHighlighting::get_activity_type(),
 			)
 		);
 		$saveWarning = LiteralField::create("Warning", "<p class='cms-warning-label'>To Add Content please save changes</p>");

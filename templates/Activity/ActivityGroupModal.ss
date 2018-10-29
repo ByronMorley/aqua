@@ -4,6 +4,8 @@
 <% require css('aqua/css/style.min.css') %>
 
 <% require javascript('twitter/bootstrap/dist/js/bootstrap.bundle.min.js') %>
+<% require javascript('components/jquery/jquery.min.js') %>
+<% require javascript('components/jqueryui/jquery-ui.min.js') %>
 <% require javascript('aqua/app/dist/bundle.js') %>
 
 <div class="block text-block activity-block">
