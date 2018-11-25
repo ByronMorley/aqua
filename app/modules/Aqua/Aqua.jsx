@@ -60,6 +60,7 @@ class Aqua {
             showNavButtons: true,
             showFinalScreen: true,
             showIntroductionScreen: false,
+            showCorrectAnswerWhenWrong:false,
         }
     }
 
@@ -69,28 +70,29 @@ class Aqua {
         let _Activity = this;
 
         //remove Score
-        if (!this.settings['keepScore']) {
+        if (!parseInt(this.settings['keepScore'])) {
+            console.log('remove score');
             this.scoreSelector.style.display = 'none';
             this.finalScore.style.display = 'none';
         }
 
         //remove Activity Count
-        if (!this.settings['showActivityCount']) {
+        if (!parseInt(this.settings['showActivityCount'])) {
             this.introText.style.display = 'none';
         }
 
         //remove container if both are removed
-        if (!this.settings['showActivityCount'] && !this.settings['keepScore']) {
+        if (!parseInt(this.settings['showActivityCount']) && !parseInt(this.settings['keepScore'])) {
             this.upperSection.style.display = 'none';
         }
 
         //remove next button
-        if (!this.settings['showFinalScreen']) {
+        if (!parseInt(this.settings['showFinalScreen'])) {
             this.nextButton.style.display = 'none';
         }
 
         //remove lower section
-        if (!this.settings['showNavButtons']) {
+        if (!parseInt(this.settings['showNavButtons'])) {
             this.lowerSection.style.display = 'none';
         }
 
@@ -161,7 +163,7 @@ class Aqua {
         this.nextButtonActive = true;
 
         if (this.currentIndex === (this.activityCount - 1)) {
-            this.nextButton.innerHTML = "Finish";
+            this.nextButton.innerHTML = this.translations.finish;
         }
     }
 
@@ -250,7 +252,7 @@ class Aqua {
         this.score = 0;
 
         //sort out the next button
-        this.nextButton.innerHTML = "Next";
+        this.nextButton.innerHTML = this.translations.next;
         this.deactivateNextButton();
 
         //reset back to activity 1

@@ -25,10 +25,13 @@
 
 }
 
+.aq-wordsearch-wrapper {
+    display:flex;
+    align-items:center;
+    justify-content: center;
+
+}
 .aq-wordsearch-activity {
-
-    width: 100%;
-
 
     p {
         font-size:22px;
@@ -40,8 +43,6 @@
 
 .aq-puzzle {
     padding:20px;
-    float: left;
-
 
     div {
         width: 100%;
@@ -83,7 +84,7 @@
 }
 
 .aq-words {
-
+    display:none;
     color: @theme-color;
     float: left;
     padding:20px;
@@ -111,7 +112,7 @@
 }
 
 #solve {
-
+    display:none;
     background: @theme-color;
     color: @light-color;
     border: 2px solid @theme-color;

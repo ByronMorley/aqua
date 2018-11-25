@@ -1,9 +1,13 @@
 <div class="pane content aq-activity aq-wordsearch-activity" id="activity-$ID" data-object="WordSearch">
-		<p>Word Search</p>
+	<div class="pane aq-question">
+        $Question
+	</div>
+	<div class="aq-wordsearch-wrapper">
 		<div class='aq-puzzle'></div>
-		<div class='aq-words'>
-			<button id='solve'>Solve Puzzle</button>
-		</div>
+	</div>
+	<!--<div class='aq-words'>
+        <button id='solve'>Solve Puzzle</button>
+    </div>-->
 </div>
 <script>
 	/**
@@ -44,20 +48,38 @@
 			 */
 
 					// The list of all the possible orientations
-			var allOrientations = ['horizontal','horizontalBack','vertical','verticalUp',
-						'diagonal','diagonalUp','diagonalBack','diagonalUpBack'];
-
+			var allOrientations = ['horizontal', 'vertical', 'diagonal', 'diagonalUp'];
+			/*
+            var allOrientations = ['horizontal','horizontalBack','vertical','verticalUp',
+                'diagonal','diagonalUp','diagonalBack','diagonalUpBack'];
+            */
 			// The definition of the orientation, calculates the next square given a
 			// starting square (x,y) and distance (i) from that square.
 			var orientations = {
-				horizontal:     function(x,y,i) { return {x: x+i, y: y  }; },
-				horizontalBack: function(x,y,i) { return {x: x-i, y: y  }; },
-				vertical:       function(x,y,i) { return {x: x,   y: y+i}; },
-				verticalUp:     function(x,y,i) { return {x: x,   y: y-i}; },
-				diagonal:       function(x,y,i) { return {x: x+i, y: y+i}; },
-				diagonalBack:   function(x,y,i) { return {x: x-i, y: y+i}; },
-				diagonalUp:     function(x,y,i) { return {x: x+i, y: y-i}; },
-				diagonalUpBack: function(x,y,i) { return {x: x-i, y: y-i}; }
+				horizontal: function (x, y, i) {
+					return {x: x + i, y: y};
+				},
+				horizontalBack: function (x, y, i) {
+					return {x: x - i, y: y};
+				},
+				vertical: function (x, y, i) {
+					return {x: x, y: y + i};
+				},
+				verticalUp: function (x, y, i) {
+					return {x: x, y: y - i};
+				},
+				diagonal: function (x, y, i) {
+					return {x: x + i, y: y + i};
+				},
+				diagonalBack: function (x, y, i) {
+					return {x: x - i, y: y + i};
+				},
+				diagonalUp: function (x, y, i) {
+					return {x: x + i, y: y - i};
+				},
+				diagonalUpBack: function (x, y, i) {
+					return {x: x - i, y: y - i};
+				}
 			};
 
 			// Determines if an orientation is possible given the starting square (x,y),
@@ -65,14 +87,30 @@
 			// Returns true if the word will fit starting at the square provided using
 			// the specified orientation.
 			var checkOrientations = {
-				horizontal:     function(x,y,h,w,l) { return w >= x + l; },
-				horizontalBack: function(x,y,h,w,l) { return x + 1 >= l; },
-				vertical:       function(x,y,h,w,l) { return h >= y + l; },
-				verticalUp:     function(x,y,h,w,l) { return y + 1 >= l; },
-				diagonal:       function(x,y,h,w,l) { return (w >= x + l) && (h >= y + l); },
-				diagonalBack:   function(x,y,h,w,l) { return (x + 1 >= l) && (h >= y + l); },
-				diagonalUp:     function(x,y,h,w,l) { return (w >= x + l) && (y + 1 >= l); },
-				diagonalUpBack: function(x,y,h,w,l) { return (x + 1 >= l) && (y + 1 >= l); }
+				horizontal: function (x, y, h, w, l) {
+					return w >= x + l;
+				},
+				horizontalBack: function (x, y, h, w, l) {
+					return x + 1 >= l;
+				},
+				vertical: function (x, y, h, w, l) {
+					return h >= y + l;
+				},
+				verticalUp: function (x, y, h, w, l) {
+					return y + 1 >= l;
+				},
+				diagonal: function (x, y, h, w, l) {
+					return (w >= x + l) && (h >= y + l);
+				},
+				diagonalBack: function (x, y, h, w, l) {
+					return (x + 1 >= l) && (h >= y + l);
+				},
+				diagonalUp: function (x, y, h, w, l) {
+					return (w >= x + l) && (y + 1 >= l);
+				},
+				diagonalUpBack: function (x, y, h, w, l) {
+					return (x + 1 >= l) && (y + 1 >= l);
+				}
 			};
 
 			// Determines the next possible valid square given the square (x,y) was ]
@@ -80,14 +118,30 @@
 			// squares that must be checked. Returning {x: x+1, y: y} will always work
 			// but will not be optimal.
 			var skipOrientations = {
-				horizontal:     function(x,y,l) { return {x: 0,   y: y+1  }; },
-				horizontalBack: function(x,y,l) { return {x: l-1, y: y    }; },
-				vertical:       function(x,y,l) { return {x: 0,   y: y+100}; },
-				verticalUp:     function(x,y,l) { return {x: 0,   y: l-1  }; },
-				diagonal:       function(x,y,l) { return {x: 0,   y: y+1  }; },
-				diagonalBack:   function(x,y,l) { return {x: l-1, y: x>=l-1?y+1:y    }; },
-				diagonalUp:     function(x,y,l) { return {x: 0,   y: y<l-1?l-1:y+1  }; },
-				diagonalUpBack: function(x,y,l) { return {x: l-1, y: x>=l-1?y+1:y  }; }
+				horizontal: function (x, y, l) {
+					return {x: 0, y: y + 1};
+				},
+				horizontalBack: function (x, y, l) {
+					return {x: l - 1, y: y};
+				},
+				vertical: function (x, y, l) {
+					return {x: 0, y: y + 100};
+				},
+				verticalUp: function (x, y, l) {
+					return {x: 0, y: l - 1};
+				},
+				diagonal: function (x, y, l) {
+					return {x: 0, y: y + 1};
+				},
+				diagonalBack: function (x, y, l) {
+					return {x: l - 1, y: x >= l - 1 ? y + 1 : y};
+				},
+				diagonalUp: function (x, y, l) {
+					return {x: 0, y: y < l - 1 ? l - 1 : y + 1};
+				},
+				diagonalUpBack: function (x, y, l) {
+					return {x: l - 1, y: x >= l - 1 ? y + 1 : y};
+				}
 			};
 
 			/**
@@ -182,7 +236,7 @@
 							x = 0, y = 0;
 
 					// loop through every position on the board
-					while( y < height ) {
+					while (y < height) {
 
 						// see if this orientation is even possible at this location
 						if (check(x, y, height, width, wordLength)) {
@@ -206,7 +260,7 @@
 							// if current cell is invalid, then skip to the next cell where
 							// this orientation is possible. this greatly reduces the number
 							// of checks that we have to do overall
-							var nextPossible = skipTo(x,y,wordLength);
+							var nextPossible = skipTo(x, y, wordLength);
 							x = nextPossible.x;
 							y = nextPossible.y;
 						}
@@ -250,7 +304,7 @@
 					}
 					// if it contains a different letter, than our word doesn't fit
 					// here, return -1
-					else if (square !== '' ) {
+					else if (square !== '') {
 						return -1;
 					}
 				}
@@ -273,7 +327,7 @@
 			var pruneLocations = function (locations, overlap) {
 
 				var pruned = [];
-				for(var i = 0, len = locations.length; i < len; i++) {
+				for (var i = 0, len = locations.length; i < len; i++) {
 					if (locations[i].overlap >= overlap) {
 						pruned.push(locations[i]);
 					}
@@ -330,24 +384,24 @@
 				 * @param {options} settings: The options to use for this puzzle
 				 * @api public
 				 */
-				newPuzzle: function(words, settings) {
+				newPuzzle: function (words, settings) {
 					var wordList, puzzle, attempts = 0, opts = settings || {};
 
 					console.log('newPuzzle() :: settings = ', settings);
 
 					// copy and sort the words by length, inserting words into the puzzle
 					// from longest to shortest works out the best
-					wordList = words.slice(0).sort( function (a,b) {
+					wordList = words.slice(0).sort(function (a, b) {
 						return (a.length < b.length) ? 1 : 0;
 					});
 
 					// initialize the options
 					var options = {
-						height:       opts.height || wordList[0].length,
-						width:        opts.width || wordList[0].length,
+						height: opts.height || wordList[0].length,
+						width: opts.width || wordList[0].length,
 						orientations: opts.orientations || allOrientations,
-						fillBlanks:   opts.fillBlanks !== undefined ? opts.fillBlanks : true,
-						maxAttempts:  opts.maxAttempts || 3,
+						fillBlanks: opts.fillBlanks !== undefined ? opts.fillBlanks : true,
+						maxAttempts: opts.maxAttempts || 3,
 						preferOverlap: opts.preferOverlap !== undefined ? opts.preferOverlap : true
 					};
 
@@ -411,15 +465,15 @@
 				 */
 				solve: function (puzzle, words) {
 					var options = {
-								height:       puzzle.length,
-								width:        puzzle[0].length,
+								height: puzzle.length,
+								width: puzzle[0].length,
 								orientations: allOrientations,
 								preferOverlap: true
 							},
 							found = [],
 							notFound = [];
 
-					for(var i = 0, len = words.length; i < len; i++) {
+					for (var i = 0, len = words.length; i < len; i++) {
 						var word = words[i],
 								locations = findBestLocations(puzzle, options, word);
 
@@ -432,7 +486,7 @@
 						}
 					}
 
-					return { found: found, notFound: notFound };
+					return {found: found, notFound: notFound};
 				},
 
 				/**
@@ -511,7 +565,7 @@
 		 *
 		 * @api private
 		 */
-		var WordFindGame = function() {
+		var WordFindGame = function () {
 
 			// List of words for this game
 			var wordList;
@@ -587,7 +641,6 @@
 			};
 
 
-
 			/**
 			 * Event that handles mouse over on a new square. Ensures that the new square
 			 * is adjacent to the previous square and the new square is along the path
@@ -601,7 +654,7 @@
 				}
 
 				// if the new square is actually the previous square, just return
-				var lastSquare = selectedSquares[selectedSquares.length-1];
+				var lastSquare = selectedSquares[selectedSquares.length - 1];
 				if (lastSquare == target) {
 					return;
 				}
@@ -611,25 +664,25 @@
 				var backTo;
 				for (var i = 0, len = selectedSquares.length; i < len; i++) {
 					if (selectedSquares[i] == target) {
-						backTo = i+1;
+						backTo = i + 1;
 						break;
 					}
 				}
 
 				while (backTo < selectedSquares.length) {
-					$(selectedSquares[selectedSquares.length-1]).removeClass('selected');
-					selectedSquares.splice(backTo,1);
-					curWord = curWord.substr(0, curWord.length-1);
+					$(selectedSquares[selectedSquares.length - 1]).removeClass('selected');
+					selectedSquares.splice(backTo, 1);
+					curWord = curWord.substr(0, curWord.length - 1);
 				}
 
 
 				// see if this is just a new orientation from the first square
 				// this is needed to make selecting diagonal words easier
 				var newOrientation = calcOrientation(
-						$(startSquare).attr('x')-0,
-						$(startSquare).attr('y')-0,
-						$(target).attr('x')-0,
-						$(target).attr('y')-0
+						$(startSquare).attr('x') - 0,
+						$(startSquare).attr('y') - 0,
+						$(target).attr('x') - 0,
+						$(target).attr('y') - 0
 				);
 
 				if (newOrientation) {
@@ -644,10 +697,10 @@
 
 				// see if the move is along the same orientation as the last move
 				var orientation = calcOrientation(
-						$(lastSquare).attr('x')-0,
-						$(lastSquare).attr('y')-0,
-						$(target).attr('x')-0,
-						$(target).attr('y')-0
+						$(lastSquare).attr('x') - 0,
+						$(lastSquare).attr('y') - 0,
+						$(target).attr('x') - 0,
+						$(target).attr('y') - 0
 				);
 
 				// if the new square isn't along a valid orientation, just ignore it.
@@ -665,14 +718,14 @@
 
 			};
 
-			var touchMove = function(e) {
+			var touchMove = function (e) {
 				var xPos = e.originalEvent.touches[0].pageX;
 				var yPos = e.originalEvent.touches[0].pageY;
 				var targetElement = document.elementFromPoint(xPos, yPos);
 				select(targetElement)
 			};
 
-			var mouseMove = function() {
+			var mouseMove = function () {
 				select(this);
 			};
 
@@ -707,7 +760,7 @@
 
 					if (wordList[i] === curWord) {
 						$('.selected').addClass('found');
-						wordList.splice(i,1);
+						wordList.splice(i, 1);
 						$('.' + curWord).addClass('wordFound');
 					}
 
@@ -759,7 +812,7 @@
 				 * @param {String} wordsEl: Selector to use when inserting the word list
 				 * @param {Options} options: WordFind options to use when creating the puzzle
 				 */
-				create: function(words, puzzleEl, wordsEl, options) {
+				create: function (words, puzzleEl, wordsEl, options) {
 
 					wordList = words.slice(0).sort();
 
@@ -796,11 +849,11 @@
 				 * @param {[[String]]} puzzle: The puzzle to solve
 				 * @param {[String]} words: The words to solve for
 				 */
-				solve: function(puzzle, words) {
+				solve: function (puzzle, words) {
 
 					var solution = wordfind.solve(puzzle, words).found;
 
-					for( var i = 0, len = solution.length; i < len; i++) {
+					for (var i = 0, len = solution.length; i < len; i++) {
 						var word = solution[i].word,
 								orientation = solution[i].orientation,
 								x = solution[i].x,
@@ -838,17 +891,18 @@
 				words,
 				'#activity-$ID .aq-puzzle',
 				'#activity-$ID .aq-words',
-				{ height: 8,
-					width:8,
+				{
+					height: 8,
+					width: 8,
 					fillBlanks: true
 				});
-		$('#solve').click( function() {
+		$('#solve').click(function () {
 			wordfindgame.solve(gamePuzzle, words);
 		});
 		// create just a puzzle, without filling in the blanks and print to console
 		var puzzle = wordfind.newPuzzle(
 				words,
-				{height: 5, width:15, fillBlanks: true}
+				{height: 5, width: 15, fillBlanks: true}
 		);
 		wordfind.print(puzzle);
 	});

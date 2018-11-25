@@ -2,7 +2,9 @@
 
 class ActivityWordSearch extends Activity
 {
-	private static $db = array();
+	private static $db = array(
+		'Question' => 'HTMLText'
+	);
 
 	private static $has_one = array();
 
@@ -15,6 +17,10 @@ class ActivityWordSearch extends Activity
 	public function getCMSFields()
 	{
 		$fields = parent::getCMSFields();
+
+		/* -- Question -- */
+
+		$fields->addFieldToTab('Root.Main', HtmlEditorField::create('Question', 'Question')->setRows(3));
 
 		return $fields;
 	}

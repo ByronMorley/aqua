@@ -6,6 +6,8 @@ class Highlighting extends Activity {
     constructor(elem, AQ) {
         super(elem, AQ);
 
+        this.explanationText = this.activity.querySelector(Config.EXPLANATION_TEXT);
+        this.finishTextArea = this.activity.querySelector('.aq-finish-notice');
         this.wordCount = 0;
         this.correctWordList = JSON.parse(this.activity.dataset.words);
         this._correctAnswerCount = this.correctWordList.length;
@@ -57,7 +59,7 @@ class Highlighting extends Activity {
         let span = document.createElement('span');
         span.innerHTML = word;
         let icon = document.createElement('i');
-        icon.className = "fa fa-times aq-answer-incorrect icon";
+        icon.className = "fa fa-trash-o icon";
         icon.addEventListener('click', () => {
             this.removeWord(id)
         });
@@ -100,15 +102,37 @@ class Highlighting extends Activity {
         return text.trim();
     }
 
+    convertWord(word) {
+        word = word.replace(/[^a-zA-Z0-9]/g, '');
+        return word.toLowerCase();
+    }
+
     checkAnswers() {
         let children = this.wordListElement.children;
         for (let i = 0; i < children.length; i++) {
             let word = children[i].querySelector('span').innerHTML;
-
-            if (this.correctWordList.indexOf(word.toLowerCase()) !== -1) {
+            if (this.correctWordList.indexOf(this.convertWord(word)) !== -1) {
                 this.selectedCorrectAnswerCount++;
             }
         }
+    }
+
+    getExplanationText() {
+        return this.AQ.translations.youHaveGot + " " + this.selectedCorrectAnswerCount + " " + this.AQ.translations.outOf + " " + this._correctAnswerCount + " " + this.AQ.translations.correct + ".";
+    }
+
+    updateExplanationArea() {
+        this.finishTextArea.style.display = 'block';
+        let explanation = document.createElement('p');
+        explanation.innerHTML = this.getExplanationText();
+        this.explanationText.innerHTML = "";
+        this.explanationText.appendChild(explanation);
+        this.explanationText.style.display = "block";
+    }
+
+    updateUI() {
+        this.updateExplanationArea();
+        this.calculateSelectedCorrectAnswerCount();
     }
 
     deactivateUI() {
@@ -116,7 +140,10 @@ class Highlighting extends Activity {
     }
 
     reset() {
+        this.finishTextArea.style.display = 'none';
+        this.explanationText.style.display = "none";
         this.wordListElement.innerHTML = '';
+        super.reset();
     }
 }
 

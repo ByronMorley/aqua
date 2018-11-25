@@ -50,8 +50,10 @@ class ActivityHighlighting extends Activity
 	{
 		$arr = array();
 		foreach ($this->Words() as $index => $word) {
-			$arr[] = strtolower($word->Word);
+
+
+			$arr[] = strtolower(preg_replace('/[^A-Za-z0-9\-]/', '', $word->Word));
 		}
-		return json_encode($arr);
+		return json_encode($arr, JSON_HEX_TAG | JSON_HEX_APOS | JSON_HEX_QUOT | JSON_HEX_AMP | JSON_UNESCAPED_UNICODE);
 	}
 }

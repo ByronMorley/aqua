@@ -4,7 +4,7 @@ class Singular extends DataObject
 {
 
 	private static $db = array(
-		"Text" => "VarChar",
+		"Text" => "VarChar(100)",
 		"Side" => "enum('left,right')",
 	);
 

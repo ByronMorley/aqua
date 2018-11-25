@@ -3,36 +3,43 @@
 /*-----------------------------------------
             PAIRS.LESS
 -----------------------------------------*/
+.aq-order-list {
+    &.aq-pairs {
+        .order {
+            width:200px;
 
-.aq-pair-activity-area {
+            &>li {
+                height:80px;
+                padding:5px;
+                display:flex;
+                align-items: center;
+                justify-content: center;
+                line-height:1.0;
+                font-size:18px;
+            }
+        }
 
-    position: relative;
-    width:720px;
-    height:300px;
-
-    overflow: hidden;
-
-    canvas {
-       margin-left:100px;
+        .drag-and-drop{
+            &>li:nth-child(1) {
+                width: 30%;
+                p{
+                    text-align: center;
+                    line-height: 1.2;
+                }
+            }
+            &>li:nth-child(2) {
+                width: 70%;
+            }
+        }
+        .aq-selectable.aq-box {
+            height:80px;
+            padding:10px;
+            display:flex;
+            align-items: center;
+            justify-content: center;
+            font-size:16px;
+            max-width:600px;
+            p{  line-height:1.2;}
+        }
     }
-
 }
-
-.aq-pool {
-
-    position: absolute;
-    width: 100px;
-
-    text-align: center;
-
-
-    &.aq-left-pool {
-        left: 0;
-        top: 0;
-    }
-    &.aq-right-pool {
-        right: 0;
-        top: 0;
-    }
-}
-

@@ -2,21 +2,21 @@ import DragAndDrop from "../Util/DragAndDrop.jsx";
 import Util from "../../../components/Util";
 import Selectable from '../Supers/Selectable.jsx';
 
-class OrderListItem extends Selectable{
+class PairItemSelectable extends Selectable {
 
     constructor(elem, activity) {
         super(elem, activity);
         this.position = parseInt(this.elem.dataset.sort);
+        this.pairId = parseInt(this.elem.dataset.pair);
         this.correct = false;
         this.Activity.itemSelected = false;
-
     }
 
     click() {
         if (this.Activity.itemSelected) {
-            if(this.selected){
+            if (this.selected) {
                 this.deselect();
-            }else{
+            } else {
                 let dragAndDrop = new DragAndDrop({originItem: this.Activity.selectedItem, destinationItem: this});
                 this.Activity.swapItems(dragAndDrop);
             }
@@ -41,17 +41,18 @@ class OrderListItem extends Selectable{
     }
 
     check() {
-        let position = (Util.getNodeIndex(this.elem) + 1);
-
-        if(position === this.position){
+        let index = Util.getNodeIndex(this.elem);
+        let leftItem = this.Activity.leftItems[index];
+        
+        if (leftItem.pairId === this.pairId) {
             this.correct = true;
             this.Activity.selectedCorrectAnswerCount++;
             this.addTickIcon();
         }
-        else{
+        else {
             this.addCrossIcon();
         }
     }
 }
 
-export default OrderListItem;
+export default PairItemSelectable;

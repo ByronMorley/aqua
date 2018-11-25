@@ -1,8 +1,8 @@
 
 <div class="pane content aq-activity aq-question-activity" id="activity-$ID" data-object="Question" data-correct="$correctAnswerCount">
 	<div class="pane aq-question">
-        $Question
-	</div>
+    $Question
+</div>
     <div class="pane aq-image">
         $Image
     </div>

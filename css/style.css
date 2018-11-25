@@ -49,6 +49,9 @@
   height: auto;
   width: auto;
 }
+.aq-activity-main button {
+  line-height: normal;
+}
 .aq-answer-incorrect {
   color: #FF0000;
 }
@@ -145,15 +148,15 @@
   color: white;
 }
 .aq-selectable.aq-box.selected {
-  background-color: #6E348C !important;
+  background-color: #6E348C;
   color: #fff;
 }
 .aq-selectable.aq-box.highlight {
-  background-color: #6E348C !important;
+  background-color: #6E348C;
   color: #fff;
 }
 .aq-selectable.aq-box:hover {
-  background-color: #6E348C !important;
+  background-color: #6E348C;
   color: #fff;
 }
 .aq-selectable.aq-box.empty {
@@ -191,6 +194,19 @@ canvas {
   left: 0;
   top: 0;
   z-index: 101;
+}
+.aq-question p,
+.aq-question ul,
+.aq-question li,
+.aq-question span {
+  font-size: 18px;
+  line-height: 1.4;
+  font-weight: 600;
+  color: #000;
+}
+.aq-question ul {
+  margin-left: 40px;
+  list-style-type: circle;
 }
 
 /*--------------------------- CONFIG.LESS --------------------------------*/
@@ -260,6 +276,33 @@ canvas {
   width: 20%;
   float: right;
   margin: 0;
+}
+.aq-highlighting .aq-main-pane {
+  position: relative;
+}
+.aq-highlighting .aq-finish-notice {
+  display: none;
+  background-color: #fff;
+  position: absolute;
+  width: 400px;
+  height: 100px;
+  left: 50%;
+  margin-left: -200px;
+  top: 50%;
+  margin-top: -50px;
+  border: 2px solid #6E348C;
+}
+.aq-highlighting .aq-explanation {
+  padding: 0;
+  height: 100%;
+  margin: 0 !important;
+}
+.aq-highlighting .aq-explanation p {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  text-align: center;
 }
 
 .aq-numeracy .aq-icons {
@@ -348,6 +391,9 @@ canvas {
   top: 0px;
   right: 20px;
 }
+.aq-order-list .aq-question {
+  margin-bottom: 20px;
+}
 
 /*--------------------------- CONFIG.LESS --------------------------------*/
 /*  1170px  */
@@ -359,27 +405,39 @@ canvas {
 /*-----------------------------------------
             PAIRS.LESS
 -----------------------------------------*/
-.aq-pair-activity-area {
-  position: relative;
-  width: 720px;
-  height: 300px;
-  overflow: hidden;
+.aq-order-list.aq-pairs .order {
+  width: 200px;
 }
-.aq-pair-activity-area canvas {
-  margin-left: 100px;
+.aq-order-list.aq-pairs .order > li {
+  height: 80px;
+  padding: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1.0;
+  font-size: 18px;
 }
-.aq-pool {
-  position: absolute;
-  width: 100px;
+.aq-order-list.aq-pairs .drag-and-drop > li:nth-child(1) {
+  width: 30%;
+}
+.aq-order-list.aq-pairs .drag-and-drop > li:nth-child(1) p {
   text-align: center;
+  line-height: 1.2;
 }
-.aq-pool.aq-left-pool {
-  left: 0;
-  top: 0;
+.aq-order-list.aq-pairs .drag-and-drop > li:nth-child(2) {
+  width: 70%;
 }
-.aq-pool.aq-right-pool {
-  right: 0;
-  top: 0;
+.aq-order-list.aq-pairs .aq-selectable.aq-box {
+  height: 80px;
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  max-width: 600px;
+}
+.aq-order-list.aq-pairs .aq-selectable.aq-box p {
+  line-height: 1.2;
 }
 
 /*--------------------------- CONFIG.LESS --------------------------------*/
@@ -519,8 +577,10 @@ canvas {
 .aq-main-pane .content {
   background-color: #fff;
 }
-.aq-wordsearch-activity {
-  width: 100%;
+.aq-wordsearch-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 .aq-wordsearch-activity p {
   font-size: 22px;
@@ -529,7 +589,6 @@ canvas {
 }
 .aq-puzzle {
   padding: 20px;
-  float: left;
 }
 .aq-puzzle div {
   width: 100%;
@@ -568,6 +627,7 @@ canvas {
   opacity: 0.9;
 }
 .aq-words {
+  display: none;
   color: #6e348c;
   float: left;
   padding: 20px;
@@ -591,6 +651,7 @@ canvas {
   color: #6e348c;
 }
 #solve {
+  display: none;
   background: #6e348c;
   color: #fff;
   border: 2px solid #6e348c;
@@ -1219,4 +1280,19 @@ canvas {
     -webkit-transform: scaleY(1);
     transform: scaleY(1);
   }
+}
+
+.aq-modal .modal-header .title {
+  line-height: normal;
+  margin: 0;
+  color: #fff;
+}
+.aq-modal .modal-body {
+  border-left: 2px solid #444;
+  border-right: 2px solid #444;
+}
+.aq-modal .modal-footer {
+  border-left: 2px solid #444;
+  border-right: 2px solid #444;
+  border-bottom: 2px solid #444;
 }

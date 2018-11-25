@@ -73,8 +73,17 @@ class ActivityGroupExtension extends DataExtension
 			'score' => _t('Aqua.SCORE', 'Score'),
 			'activity' => _t('Aqua.ACTIVITY', 'Activity'),
 			'of' => _t('Aqua.OF', 'Of'),
-			'correct' => _t('Aqua.CORRECT_ANSWER', 'Correct Answer'),
+			'correctAnswer' => _t('Aqua.CORRECT_ANSWER', 'Correct Answer'),
 			'incorrect' => _t('Aqua.INCORRECT_ANSWER', 'Of'),
+			'finish' => _t('Aqua.Finish', 'Finish'),
+			'selectOneAnswer' => _t('Aqua.Select_one_answer', 'Select one answer'),
+			'selectOneOrMoreAnswer' => _t('Aqua.Select_one_or_more_answer', 'Select one or more answers'),
+			'addWord' => _t('Aqua.Add_Word', 'Add Word'),
+			'words' => _t('Aqua.Words', 'Words'),
+			'youHaveGot' => _t('Aqua.You_have_got', 'You have got'),
+			'outOf' => _t('Aqua.out_of', 'out of'),
+			'correct' => _t('Aqua.correct', 'correct'),
+			'next' => _t('Aqua.NEXT', 'Next'),
 		);
 
 		return $this->arrayToJson($defaults);
@@ -103,7 +112,6 @@ class ActivityGroupExtension extends DataExtension
 
 	public function updateCMSFields(FieldList $fields)
 	{
-
 		/*********************************
 		 *        CONFIG
 		 ********************************/
@@ -130,9 +138,9 @@ class ActivityGroupExtension extends DataExtension
 				'ActivityAnagram' => ActivityAnagram::get_activity_type(),
 				'ActivityNumeracyQuestion' => ActivityNumeracyQuestion::get_activity_type(),
 				'ActivityOrderList' => ActivityOrderList::get_activity_type(),
-				'ActivityPairs' => ActivityPairs::get_activity_type(),
 				'ActivityWordSearch' => ActivityWordSearch::get_activity_type(),
 				'ActivityHighlighting' => ActivityHighlighting::get_activity_type(),
+				'ActivityPairs' => ActivityPairs::get_activity_type(),
 			)
 		);
 		$saveWarning = LiteralField::create("Warning", "<p class='cms-warning-label'>To Add Content please save changes</p>");
@@ -150,10 +158,8 @@ class ActivityGroupExtension extends DataExtension
 			$fields->addFieldToTab('Root.Activities', $saveWarning);
 		}
 
-
 		$sectiongridField = GridField::create('Activities', "Activities", $this->owner->Activities(), $sectionconfig);
 		$fields->addFieldToTab("Root.Activities", $sectiongridField);
-
 
 		return $fields;
 	}

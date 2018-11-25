@@ -2,7 +2,9 @@
 
 class ActivityOrderList extends Activity
 {
-	private static $db = array();
+	private static $db = array(
+		'Question' => 'HTMLText'
+	);
 
 	private static $has_one = array();
 

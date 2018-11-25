@@ -15,6 +15,10 @@
         height: auto;
         width: auto;
     }
+
+    button {
+        line-height:normal;
+    }
 }
 
 .aq-answer-incorrect {
@@ -120,15 +124,15 @@
             }
         }
         &.selected {
-            background-color: @alpha-color !important;
+            background-color: @alpha-color;
             color: #fff;
         }
         &.highlight {
-            background-color: @alpha-color !important;
+            background-color: @alpha-color;
             color: #fff;
         }
         &:hover {
-            background-color: @alpha-color !important;
+            background-color: @alpha-color;
             color: #fff;
         }
 
@@ -180,3 +184,17 @@ canvas {
     top:0;
     z-index:101;
 }
+
+.aq-question {
+    p, ul, li, span {
+        font-size: 18px;
+        line-height: 1.4;
+        font-weight: 600;
+        color:#000;
+    }
+    ul{
+        margin-left:40px;
+        list-style-type: circle;
+    }
+}
+

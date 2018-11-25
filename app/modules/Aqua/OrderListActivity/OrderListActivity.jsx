@@ -1,7 +1,7 @@
 import Config from '../Config.jsx';
 import Activity from '../Supers/Activity.jsx';
 import Item from './OrderItemSelectable.jsx';
-import DragAndDrop from "./DragAndDrop.jsx";
+import DragAndDrop from "../Util/DragAndDrop.jsx";
 
 class OrderList extends Activity {
 
@@ -100,17 +100,17 @@ class OrderList extends Activity {
 
             $(elem).droppable({
                 over: function (event, ui) {
-                    console.log('over');
+                    //console.log('over');
                     _this.hoveringOverAnElement = true;
                     _this.hoverElement = _selectable;
                 },
                 out: function (event, ui) {
-                    console.log('out');
+                    //console.log('out');
                     _this.hoveringOverAnElement = false;
                     _this.hoverElement = null;
                 },
                 deactivate: function (event, ui) {
-                    console.log('deactivate');
+                    //console.log('deactivate');
                 }
             });
         });
@@ -127,12 +127,8 @@ class OrderList extends Activity {
 
             $(elem).droppable({
                 drop: function (event, ui) {
-
-                    console.log('hello');
-
-
                     if (_this.hoveringOverAnElement) {
-                        console.log('hover');
+                        //console.log('hover');
 
                         let dragAndDrop = new DragAndDrop({originItem: _this.activeDragItem, destinationItem: _this.hoverElement});
                         _this.swapItems(dragAndDrop);

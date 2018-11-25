@@ -32,7 +32,7 @@ class Answer extends Selectable {
             }
         } else {
             if (this.correct) {
-                this.addTickIcon();
+                (this.Activity.AQ.showCorrectAnswerWhenWrong) ? this.addTickIcon() : this.fadeOut();
             } else {
                 this.fadeOut();
             }

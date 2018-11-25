@@ -1,4 +1,7 @@
 <div class="pane content aq-activity aq-order-list" id="activity-$ID" data-object="OrderList">
+	<div class="pane aq-question">
+        $Question
+	</div>
 	<ul class="drag-and-drop">
 		<li>
 			<ul class="order">

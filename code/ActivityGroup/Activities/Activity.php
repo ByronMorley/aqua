@@ -69,9 +69,9 @@ class Activity extends DataObject
     public function questionRuleText()
     {
         if ($this->correctAnswerCount() > 1) {
-            return "(Select one or more Answers)";
+            return _t('Aqua.Select_one_or_more_answer', 'Select one or more answers');
         } else {
-            return "(Select one Answer)";
+            return _t('Aqua.Select_one_answer', 'Select one answer');
         }
     }
 

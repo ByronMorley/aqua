@@ -41,12 +41,12 @@ class Question extends Activity {
     getExplanationText() {
         if (this.hasOneAnswer) {
             if (this.selectedCorrectAnswerCount) {
-                return this.AQ.translations.correct;
+                return this.AQ.translations.correctAnswer;
             } else {
                 return this.AQ.translations.incorrect;
             }
         } else {
-            return "You have got " + this.selectedCorrectAnswerCount + " out of " + this._correctAnswerCount + " Correct."
+            return "Rydych wedi llwyddo i ateb " + this.selectedCorrectAnswerCount + " o " + this._correctAnswerCount + " yn gywir."
         }
     }
 
