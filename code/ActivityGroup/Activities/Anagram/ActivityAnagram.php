@@ -30,10 +30,14 @@ class ActivityAnagram extends Activity
 		return $anagram;
 	}
 
-	public function shuffleWord($word){
+	public function shuffleWord($word)
+	{
 		$string = null;
+		$count = 0;
 		do {
 			$string = str_shuffle($word);
+			$count++;
+			if ($count > 20) break;
 		} while ($string == $word);
 
 		return $string;

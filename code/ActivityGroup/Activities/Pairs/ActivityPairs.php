@@ -3,7 +3,9 @@
 class ActivityPairs extends Activity
 {
 
-	private static $db = array();
+	private static $db = array(
+		'Question' => 'HTMLText'
+	);
 
 	private static $has_one = array();
 
@@ -12,12 +14,14 @@ class ActivityPairs extends Activity
 		'Singles' => 'Singular',
 	);
 
-	public function leftSide (){
-		return Singular::get()->filter('Side', 'left');
+	public function leftSide()
+	{
+		return Singular::get()->filter(array('Side' => 'left', 'ActivityPairID' => $this->ID));
 	}
 
-	public function rightSide(){
-		return Singular::get()->filter('Side', 'right');
+	public function rightSide()
+	{
+		return Singular::get()->filter(array('Side' => 'right', 'ActivityPairID' => $this->ID));
 	}
 
 	public function getCMSFields()

@@ -20,7 +20,7 @@
 	<ul class="drag-and-drop">
 		<li>
 			<ul class="order">
-                <% loop $leftSide.Sort('RAND()') %>
+                <% loop $leftSide %>
 					<li class="left-pair" data-text="$Text" data-pair="$PairID" data-side="$Side" ><p>$Text</p></li>
                 <% end_loop %>
 			</ul>
